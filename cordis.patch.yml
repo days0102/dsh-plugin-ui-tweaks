@@ -1,0 +1,13 @@
+# Bundle self-activation patch.
+#
+# 本包被 `dsh plugin --profile web add <path>` 安装进 profile 后，这段 insert 把
+# 插件的 node 半侧挂进配置树。node 半侧是空的（见 lib/index.js），它存在的唯一
+# 理由是让 Loader 有这一行条目 —— dsh-client-modules 只扫描「已启用的 Loader
+# 条目」来发现 dsh.client 声明。浏览器半侧（lib/client.js）由 package.json 的
+# `dsh.client` 声明自动发现、按需加载，无需在这里接线。
+#
+# 新增功能时不需要改这个文件：所有 UI 调整都在 client 半侧，加在 lib/client.js 的
+# 对应 feature region 里即可。
+- insert:
+    - id: ui-tweaks
+      name: dsh-plugin-ui-tweaks

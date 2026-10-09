@@ -1,0 +1,29 @@
+{
+  "name": "dsh-plugin-ui-tweaks",
+  "version": "0.1.0",
+  "description": "dsh Web GUI 的界面微调集合：终端命令横幅点击展开/收起、按区域设置字号等。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": []
+    }
+  }
+}
